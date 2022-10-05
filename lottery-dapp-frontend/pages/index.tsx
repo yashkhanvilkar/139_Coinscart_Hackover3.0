@@ -9,6 +9,8 @@ import { ethers } from "ethers";
 import { currency } from '../constants';
 import CountdownTimer from '../components/CountdownTimer';
 import toast from "react-hot-toast";
+import AdminControls from '../components/AdminControls';
+import Marquee from "react-fast-marquee";
 
 
 const Home: NextPage = () => {
@@ -103,6 +105,17 @@ const Home: NextPage = () => {
 
       <div className='flex-1'>
         <Header />
+        <Marquee className='bg-[#2E0245]' gradient={false} speed={100}>
+          <div className='flex space-x-2 mx-10'>
+            <h4 className='text-white font-bold'>Last Winner: {lastWinner?.toString()}</h4>
+            <h4 className='text-white font-bold'>Previous winnings:{" "}{lastWinnerAmount && ethers.utils.formatEther(lastWinnerAmount?.toString())}{" "}{currency}</h4>
+          </div>
+        </Marquee>
+        {lotteryOperator === address && (
+          <div className='flex justify-center'>
+            <AdminControls />
+          </div>
+        )}
         {winnings > 0 && (
           <div className='max-w-md md:max-w-2xl lg:max-w-4xl mx-auto mt-5'>
             <button
