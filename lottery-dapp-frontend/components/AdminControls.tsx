@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StarIcon, CurrencyDollarIcon, ArrowPathIcon, ArrowUturnDownIcon } from "@heroicons/react/24/solid";
 import { useContract, useContractRead, useContractWrite } from '@thirdweb-dev/react';
 import { ethers } from 'ethers';
@@ -93,6 +93,7 @@ function AdminControls() {
     }
 
 
+
     return (
         <div className='text-white text-center px-5 py-3 rounded-md border-pink-300/20 border'>
             <h2 className='font-bold'>Admin Controls</h2>
@@ -114,7 +115,7 @@ function AdminControls() {
             </div>
             <div className='pt-5'>
                 <p className='font-bold'>List of participants:</p>
-                {getTickets.length > 0 ? <ul className='p-2 bg-[#570A57] rounded-md border-pink-500 border'>
+                {getTickets && getTickets.length > 0 ? <ul className='p-2 bg-[#570A57] rounded-md border-pink-500 border'>
                     {getTickets.map((getTicket: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined) => (
                         <li className='w-full p-1'>{getTicket}</li>
                     ))}
