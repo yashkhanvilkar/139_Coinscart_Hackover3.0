@@ -151,7 +151,7 @@ const Home: NextPage = () => {
             </div>
 
           </div>
-
+          {/* Buy Tickets section  */}
           <div className="stats-container space-y-2">
             <div>
               <div className="stats-container">

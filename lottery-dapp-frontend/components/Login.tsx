@@ -8,7 +8,7 @@ function Login() {
             <div className="flex flex-col items-center mb-10">
                 <img className="rounded-full h-56 w-56 mb-10" src="https://imgur.com/8VDtyFG.png" alt="" />
                 <h1 className="text-6xl text-white font-bold">The Lottery dApp</h1>
-                <h2 className="text-white mt-2">Get Started by logging in with your Wallet</h2>
+                <h2 className="text-white mt-2">Enter the dApp by logging in with your Wallet</h2>
 
                 {/* <button className="bg-white px-8 py-5 mt-10 rounded-lg shadow-lg font-bold">Login with Metamask</button> */}
                 <ConnectWallet className="bg-white px-8 py-5 mt-10 rounded-lg shadow-lg font-bold" colorMode="light" />

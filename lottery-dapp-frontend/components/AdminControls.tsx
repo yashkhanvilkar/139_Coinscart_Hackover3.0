@@ -9,6 +9,8 @@ import { info } from 'console';
 function AdminControls() {
     const { contract, isLoading } = useContract(process.env.NEXT_PUBLIC_LOTTERY_CONTRACT_ADDRESS);
     const { data: totalCommission } = useContractRead(contract, "operatorTotalCommission");
+    const { data: getTickets } = useContractRead(contract, "getTickets");
+
 
     const { mutateAsync: DrawWinnerTicket } = useContractWrite(contract, "DrawWinnerTicket");
     const { mutateAsync: RefundAll } = useContractWrite(contract, "RefundAll");
@@ -109,6 +111,14 @@ function AdminControls() {
                 <button onClick={onRefundAll} className='admin-button hover:bg-pink-500/50'>
                     <ArrowUturnDownIcon className='h-6 mx-auto mb-2' />
                     Refund All</button>
+            </div>
+            <div className='pt-5'>
+                <p className='font-bold'>List of participants:</p>
+                {getTickets.length > 0 ? <ul className='p-2 bg-[#570A57] rounded-md border-pink-500 border'>
+                    {getTickets.map((getTicket: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined) => (
+                        <li className='w-full p-1'>{getTicket}</li>
+                    ))}
+                </ul> : <p className='p-2 bg-[#570A57] rounded-md border-pink-500 border'>There are no participants in the lottery</p>}
             </div>
         </div>
     )
